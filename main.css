@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    outline: none;
+}
+
+@media (min-height:800px) and (min-width:1200px){
+    * {
+        font-size: 1.5rem;
+    }
+}
+
+body {
+    background-color: #e3e3e3;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.burger {
+    left: 1rem;
+    top: 1rem;
+    width: 1.5rem;
+    height: .7rem;
+    position: fixed;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    background-color: #262626;
+    height: 20%;
+    margin-bottom: 20%;
+}
+
+.burger span.last {
+    display: block;
+    background-color: #262626;
+    height: 20%;
+    margin-bottom: 0;
+}
+
+nav {
+    position: fixed;
+    height: 80%;
+    width: 45%;
+    opacity: 0;
+    transition: .2s ease;
+}
+
+nav.active {
+    opacity: 1;
+}
+
+nav::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+}
+
+nav ul {
+    width: 80%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+nav ul li {
+    display: block;
+    text-transform: uppercase;
+    line-height: 2.5;
+    font-size: .8rem;
+    padding-left: 30%;
+    font-weight: 800;
+    color: #262626;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    transition: .3s ease;
+}
+
+main article {
+    height: calc(100vh + 8rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fafafa;
+    color: #262626;
+    padding: 4rem;
+    border-bottom: 8rem solid #e3e3e3;
+
+}
+
+main article:last-child {
+    height: 100vh;
+    border-bottom: none;
+}
+
+@media screen and (orientation:portrait) {
+    article {
+        padding: 4rem 1rem;
+    }
+}
+
+@media screen and (orientation:landscape) and (max-width:900px) {
+    artile {
+        padding: 0 4rem;
+    }
+}
+
+main a, main a:visited {
+    color: teal;
+    font-weight: bold;
+}
+
+main p {
+    padding-bottom: 1em;
+}
+
+main h1 {
+    margin: 0 0 .7em;
+}
+
+main ul li {
+    margin: 0 0 .5em 1em;
+}
+
+nav.active + main {
+    cursor: pointer;
+}
+
+@media screen and (orientation:portrait) {
+    nav.active + main {
+        transform: translateX(35%) scale(.8);
+        box-shadow: 0 0 30px 5px rgba(38, 38, 38, .3);
+    }
+}
+
+@media screen and (orientation:landscape) {
+    nav.active + main {
+        transform: translateX(20%) scale(.8);
+        box-shadow: 0 0 30px 5px rgba(38, 38, 38, .3);
+    }
+}

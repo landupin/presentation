@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="burger">
+        <span></span>
+        <span></span>
+        <span class="last"></span>
+    </div>
+    <nav>
+        <ul>
+            <li>chapter 1</li>
+            <li>chapter 2</li>
+            <li>chapter 3</li>
+            <li>chapter 4</li>
+        </ul>
+    </nav>
+    <main>
+        <article id="first">
+            <h1>This is the presentation</h1>
+            <p>Design by <a href="https://landupin.tk">landupin</a></p>
+
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium pariatur, quam error neque esse
+                quos cumque quidem velit inventore aut natus voluptatem voluptatum similique! Libero debitis vitae
+                aliquid at placeat?
+                Neque nesciunt dolorem aliquid atque voluptatem hic magni modi assumenda, minus repellendus ab
+                laudantium fuga placeat rem non sapiente? Aspernatur mollitia libero eaque illum ipsa vero minima
+                accusamus omnis fugiat?
+                Iure temporibus impedit delectus quis tenetur quibusdam ab quos sapiente at nisi beatae eligendi debitis
+                dolorem laudantium vero, dicta itaque, rerum voluptatibus. Laborum adipisci quos voluptates
+                reprehenderit architecto fugiat similique.
+            </p>
+        </article>
+
+        <article id="second">
+            <h1>This is a slide of content</h1>
+            <ul>
+                <li>why so serious?</li>
+                <li>and where did my content go?</li>
+            </ul>
+        </article>
+    </main>
+
+    <script>
+        document.querySelector(".burger").addEventListener("click", function () {
+            document.querySelector("nav").classList.toggle("active");
+        });
+
+        document.querySelector("main").addEventListener("click", function () {
+            document.querySelector("nav").classList.remove("active");
+        }, true);
+
+        window.addEventListener("keydown", function (event) {
+            if (event.defaultPrevented) {
+                return; // Do nothing if event already handled
+            }
+
+            el = document.elementFromPoint(0, Math.round(window.innerHeight / 2));
+            switch (event.code) {
+                case "KeyS":
+                case "ArrowDown":
+                case "KeyD":
+                case "ArrowRight":
+                    // next slide
+                    nel = el.nextElementSibling;
+                    if (nel) {
+                        event.preventDefault();
+                        window.location.hash = '#' + nel.getAttribute("Id");
+                    }
+                    break;
+                case "KeyW":
+                case "ArrowUp":
+                case "KeyA":
+                case "ArrowLeft":
+                    // prev slide
+                    pel = el.previousElementSibling;
+                    if (pel) {
+                        event.preventDefault();
+                        window.location.hash = '#' + pel.getAttribute("Id");
+                    }
+                    break;
+            }
+        });
+
+        window.addEventListener("mousemove",
+            function () {
+                document.querySelector("main").style.cursor = "initial";
+                setTimeout("document.querySelector('main').style.cursor = 'none'", 5000);
+            }, true);
+
+    </script>
+</body>
+
+</html>
